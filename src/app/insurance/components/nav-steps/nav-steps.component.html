@@ -1,0 +1,31 @@
+<nav class="w-full">
+    <div class="hidden md:flex items-center justify-center bg-white rounded-md py-3 shadow-sm">
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold">
+                    1
+                </div>
+                <div class="text-sm md:text-base font-medium text-indigo-700">Planes y coberturas</div>
+            </div>
+            <div class="text-gray-300">• • •</div>
+            <div class="flex items-center gap-3 text-gray-400">
+                <div class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center">2</div>
+                <div class="text-sm md:text-base">Resumen</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="md:hidden flex items-center gap-3 py-2">
+        <button (click)="back.emit()" class="p-2 rounded-full border border-gray-200">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="text-xs font-medium text-gray-600">PASO 1 DE 2</div>
+
+        <div class="flex-1 px-3">
+            <div class="h-2 rounded-full bg-gray-200 overflow-hidden">
+                <div class="h-full bg-indigo-500 rounded-full" style="width:50%"></div>
+            </div>
+        </div>
+    </div>
+</nav>

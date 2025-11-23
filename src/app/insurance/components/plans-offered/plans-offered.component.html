@@ -1,0 +1,114 @@
+@if (visible()) {
+    <div class="mt-8">
+        <div class="hidden md:grid md:grid-cols-3 gap-6">
+            @for (plan of plans(); track $index) {
+                <article class="bg-white rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        @if ($index === 1) {
+                            <div class="w-[122px] h-[20px] text-xs font-semibold bg-[#7DF0BA] text-[#141938] px-2 py-1 rounded-md flex items-center justify-center">
+                                Plan recomendado
+                            </div>
+                        } @else {
+                            <div class="px-2 py-1 h-[20px]"></div>
+                        }
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#0b1220]">{{ plan.name }}</h3>
+                            <div class="px-2 py-1 rounded-md">
+                                @if ($index == 1) {
+                                    <img src="/assets/hospital.png" alt="icon" class="w-[48px] h-[48]" />
+                                } @else {
+                                    <img src="/assets/home.png" alt="icon" class="w-[48px] h-[48]" />
+                                }
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-[#7981B2] text-[12px] mt-2 font-semibold">COSTO DEL PLAN</p>
+                        <p class="text-sm text-[#141938] text-[20px] font-semibold">${{ plan.price }}</p>
+                        <hr class="my-4 border-t border-gray-100" />
+        
+                        <ul class="list-disc text-sm text-gray-600 space-y-3">
+                            @for (feat of plan.description; track $index) {
+                                <li class="ml-[24px]">  
+                                    <span class="text-[#141938]" [innerHTML]="feat"></span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+        
+                    <div class="mt-6">
+                        <button 
+                            (click)="onSelect(plan)"
+                            class="w-full bg-[#FF1C44] text-white py-3 rounded-full font-semibold cursor-pointer"
+                        >
+                            Seleccionar plan
+                        </button>
+                    </div>
+                </article>
+            }
+        </div>
+    
+        <div class="md:hidden">
+            <div #scrollContainer class="overflow-x-auto flex gap-6 snap-x snap-mandatory px-4 py-6" (scroll)="onScroll()">
+                @for (plan of plans(); track $index) {
+                    <div class="min-w-[78%] snap-start bg-white rounded-2xl p-6 shadow-md min-h-[360px] flex flex-col justify-between">
+                        <div>
+                            @if ($index === 1) {
+                                <div class="w-[122px] h-[20px] text-xs font-semibold bg-[#7DF0BA] text-[#141938] px-2 py-1 rounded-md flex items-center justify-center">
+                                    Plan recomendado
+                                </div>
+                            } @else {
+                                <div class="px-2 py-1 h-[20px]"></div>
+                            }
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg font-bold text-[#0b1220]">{{ plan.name }}</h3>
+                                <div class="px-2 py-1 rounded-md">
+                                    @if ($index == 1) {
+                                        <img src="/assets/hospital.png" alt="icon" class="w-[48px] h-[48]" />
+                                    } @else {
+                                        <img src="/assets/home.png" alt="icon" class="w-[48px] h-[48]" />
+                                    }
+                                </div>
+                            </div>
+        
+                            <p class="text-sm text-[#7981B2] text-[12px] mt-2 font-semibold">COSTO DEL PLAN</p>
+                            <p class="text-sm text-[#141938] text-[20px] font-semibold">{{ plan.price }}</p>
+                            <hr class="my-4 border-t border-gray-100" />
+        
+                            <ul class="text-sm text-gray-600 space-y-3">
+                                @for (feat of plan.description; track $index) {
+                                    <li class="flex items-start gap-3">
+                                        <i class="fa-solid fa-circle-dot mt-1 text-sm text-indigo-600"></i>
+                                        <span class="text-[#141938]" [innerHTML]="feat"></span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+        
+                        <div class="mt-6">
+                            <button 
+                                (click)="onSelect(plan)"
+                                class="w-full bg-[#FF1C44] text-white py-3 rounded-full font-semibold cursor-pointer"
+                            >
+                                Seleccionar plan
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+    
+            <div class="flex items-center justify-center gap-6 mt-4">
+                <button (click)="prev()"
+                    class="w-10 h-10 rounded-full border border-indigo-200 flex items-center justify-center">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+    
+                <div class="text-sm text-gray-600">{{ currentIndex() + 1 }} / {{ plans().length }}</div>
+    
+                <button (click)="next()"
+                    class="w-10 h-10 rounded-full border border-indigo-200 flex items-center justify-center">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,45 @@
+<div class="flex flex-col md:flex-row gap-6 items-center">
+    <button (click)="choose('me')" type="button"
+        class="w-80 md:w-96 bg-white rounded-xl p-6 text-left shadow-md hover:shadow-lg transition relative flex flex-col justify-between border-2"
+        [class.border-indigo-600]="selected() === 'me'" [attr.aria-pressed]="selected() === 'me'">
+        <div class="flex items-start gap-4">
+            <div class="p-2">
+                <img src="/assets/for-me.png" alt="icon" class="w-[48px] h-[48]" />
+            </div>
+            <div>
+                <div class="font-bold text-lg text-[#141938">Para mí</div>
+                <p class="mt-2 text-sm text-[#141938">Cotiza tu seguro de salud y agrega familiares si así lo deseas.
+                </p>
+            </div>
+        </div>
+        <div class="absolute top-4 right-4">
+            @if (selected()==='me') {
+                <div class="w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            }
+        </div>
+    </button>
+
+    <button (click)="choose('other')" type="button"
+        class="w-80 md:w-96 bg-white rounded-xl p-6 text-left shadow-md hover:shadow-lg transition relative flex flex-col justify-between border-2"
+        [class.border-indigo-600]="selected() === 'other'" [attr.aria-pressed]="selected() === 'other'">
+        <div class="flex items-start gap-4">
+            <div class="p-2">
+                <img src="/assets/for-other.png" alt="icon" class="w-[48px] h-[48]" />
+            </div>
+            <div>
+                <div class="font-bold text-lg text-[#141938">Para alguien más</div>
+                <p class="mt-2 text-sm text-[#141938">Realiza una cotización para uno de tus familiares o cualquier
+                    persona.</p>
+            </div>
+        </div>
+        <div class="absolute top-4 right-4">
+            @if (selected() === 'other') {
+                <div class="w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            }
+        </div>
+    </button>
+</div>

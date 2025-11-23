@@ -1,0 +1,27 @@
+<div class="max-w-6xl mx-auto px-6 md:px-10 xl:px-20 py-6">
+    <section>
+        <button class="cursor-pointer flex items-center gap-2 text-[#4F4FFF] font-medium mb-6 justify-start" type="button"
+            (click)="onBack()">
+            <i class="fa-solid fa-arrow-left"></i>
+            Volver
+        </button>
+    </section>
+
+    <section class="mt-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#141938">
+            {{ informationService.queryCacheUser.get('user')?.name }} ¿Para quién deseas cotizar?
+        </h2>
+        <p class="text-[#141938 mt-2">Selecciona la opción que se ajuste más a tus necesidades.</p>
+    </section>
+
+    <section class="mt-8 flex justify-center">
+        <app-select-person (selectOption)="onSelectPersona($event)"></app-select-person>
+    </section>
+
+    @if (isLoadPlans()) {
+        <section class="mt-10" id="plans-section">
+            <app-plans-offered [visible]="selectedOption !== null"
+                (planSelected)="onPlanSelected($event)"></app-plans-offered>
+        </section>
+    }
+</div>

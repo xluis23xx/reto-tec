@@ -1,0 +1,85 @@
+<div class="flex flex-col sm:flex-row items-center justify-around gap-6 px-6 md:px-10 xl:px-20 py-4">
+
+    <img class="rounded-xl max-w-xs sm:max-w-sm md:max-w-md" src="/assets/image220.png" alt="">
+
+    <form 
+        class="max-w-sm space-y-6"
+        autocomplete="off"
+        [formGroup]="clientForm"
+        (ngSubmit)="onSubmit()"
+    >
+        <div>
+            <span
+                class="bg-gradient-to-r from-[#00F4E2] to-[#00FF7F] text-black text-sm font-semibold px-3 py-1 rounded-md">
+                Seguro Salud Flexible
+            </span>
+        </div>
+
+        <h1 class="text-3xl font-bold leading-tight">
+            Creado para ti y tu <br /> familia
+        </h1>
+
+        <p class="text-gray-400 text-sm -mt-2">
+            Tú eliges cuánto pagar, ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.
+        </p>
+
+        <div class="space-y-4">
+            <div class="flex w-full">
+                <div class="relative">
+                    <select
+                        class="bg-white text-black px-4 py-3 pr-10 rounded-l-xl border border-gray-300 outline-none focus:ring-0 appearance-none w-40"
+                        formControlName="typeDocument"
+                    >
+                        <option value="DNI">DNI</option>
+                        <option value="CARNET">Carnet de Extranjería</option>
+                    </select>
+                    <i
+                        class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 pointer-events-none"></i>
+                </div>
+
+                <input 
+                    class="w-full bg-white text-black px-4 py-3 rounded-r-xl border border-gray-300"
+                    placeholder="Nro. de documento"
+                    formControlName="numberDocument"
+                />
+            </div>
+
+            <input 
+                class="w-full bg-white text-black px-4 py-3 rounded-xl border border-gray-300"
+                placeholder="Celular"
+                formControlName="phone"
+            />
+        </div>
+
+        <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input 
+                    type="checkbox" 
+                    class="accent-[#651FFF] w-4 h-4"
+                    formControlName="policy1"
+                >
+                <span>Acepto la Política de Privacidad</span>
+            </label>
+
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input 
+                    type="checkbox" 
+                    class="accent-[#651FFF] w-4 h-4"
+                    formControlName="policy2"
+                >
+                <span>Acepto la Política Comunicaciones Comerciales</span>
+            </label>
+
+            <a class="text-gray-400 underline cursor-pointer">Aplican Términos y Condiciones.</a>
+        </div>
+
+        <button 
+            class="w-[195px] bg-[#03050F] py-4 rounded-full text-lg font-semibold text-white shadow-lg cursor-pointer"
+            type="submit"
+        >
+            Cotiza aquí
+        </button>
+    </form>
+
+    <div class="max-w-sm md:max-w-lg"></div>
+</div>
